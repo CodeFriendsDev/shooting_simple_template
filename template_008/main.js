@@ -16,9 +16,13 @@ function gameStart(){
     // ボス
     var boss = new Sprite(32, 32);
     boss.backgroundColor = "black";
-    boss.x = scene.width/2;
+    boss.x = scene.width/4;
     boss.y = scene.height * 0.2;
     scene.addChild(boss);
+
+    boss.tl.moveBy(200, 0, 64);
+    boss.tl.moveBy(-200, 0, 64);
+    boss.tl.loop();
 
     // 弾グループ
     var shotGroup = new Group();
@@ -33,7 +37,7 @@ function gameStart(){
         bullet.backgroundColor = "white";
         bullet.centerX = Math.random() * 60;// とりま画面の左上に
         bullet.centerY = Math.random() * 60;
-        bullet.moveX   = 0;// 速度も0に!!
+        bullet.moveX   = 0;// 速度も0に!! <- 重要!!
         bullet.moveY   = 0;
         bullets.push(bullet);// マガジンに追加
         shotGroup.addChild(bullet);
@@ -42,6 +46,7 @@ function gameStart(){
         bullet.on(Event.ENTER_FRAME, function(){
             this.centerX += this.moveX;
             this.centerY += this.moveY;
+
             if(scene.height < this.centerY){
                 // マガジンに戻す
                 this.centerX = Math.random() * 60;// とりま画面の左上に
@@ -56,8 +61,7 @@ function gameStart(){
     // 定期的に実行
     scene.tl.then(function(){
 
-        if(bullets.length <= 0) return;// マガジンに無い場合はストップ
-
+        if(bullets.length <= 0) return;// マガジンに無い場合はここでストップ
         let bullet = bullets.pop();// マガジンから1つ取り出す
         bullet.centerX = boss.centerX;
         bullet.centerY = boss.centerY;
@@ -66,7 +70,7 @@ function gameStart(){
         bullet.moveX   = 0;
         bullet.moveY   = 5;
     });
-    scene.tl.delay(32);
+    scene.tl.delay(8);
     scene.tl.loop();
 
     //==========
