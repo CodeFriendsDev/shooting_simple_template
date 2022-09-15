@@ -30,7 +30,7 @@ function gameStart(){
 
     // マガジンに弾丸を用意しておく
     var bullets = [];
-    for(let i=0; i<3; i++){
+    for(let i=0; i<30; i++){
 
         // 弾スプライト
         var bullet = new Sprite(2, 8);
