@@ -18,7 +18,6 @@ function gameStart(){
     var pad  = 16;// サイズ
     var size = pad - 2;
 
-
     for(var r=0; r<rows; r++){
         for(var c=0; c<cols; c++){
             var tile = new Sprite(size, size);
