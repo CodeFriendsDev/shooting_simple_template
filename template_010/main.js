@@ -21,7 +21,7 @@ function gameStart(){
 
     // 未使用の弾
     var bullets = [];
-    for(let i=0; i<30; i++){
+    for(let i=0; i<100; i++){
         var bullet = new Sprite(2, 8);// 弾スプライト
         bullet.backgroundColor = "silver";
         bullet.moveX = 0;// 速度も0に!! <- 重要!!
@@ -52,7 +52,7 @@ function gameStart(){
     boss.tl.loop();
 
     // 射撃開始(プレイヤー)
-    bltGrpPlayer.tl.delay(8);
+    bltGrpPlayer.tl.delay(4);
     bltGrpPlayer.tl.then(function(){
         var bullet = getBullet();
         if(!bullet) return;
@@ -60,7 +60,7 @@ function gameStart(){
         bullet.centerX = player.centerX;
         bullet.centerY = player.centerY;
         bullet.moveX   = 0;
-        bullet.moveY   = -4;
+        bullet.moveY   = -8;
 
         bullet.on(Event.ENTER_FRAME, function(){
             this.centerX += this.moveX;// 移動
