@@ -36,9 +36,8 @@ function gameStart(){
             var y = Math.random() * 200;
             var dX = Math.random() * 80 - 40;
             var dY = Math.random() * 80 - 40;
-            enemyGroup.addChild(
-                createEnemy(size, size, "orange",
-                    x, y, dX, dY, 32));
+            var enemy = createEnemy(size, size, "orange", x, y, dX, dY, 32)
+            enemyGroup.addChild(enemy);
         }
     });
     bkg.tl.loop();
@@ -65,7 +64,7 @@ function gameStart(){
     scene.addChild(bltGrpEnemy);
 
     // 射撃開始(プレイヤー)
-    bltGrpPlayer.tl.delay(4);
+    bltGrpPlayer.tl.delay(16);
     bltGrpPlayer.tl.then(function(){
         var bullet = getBullet();
         if(!bullet) return;
@@ -97,6 +96,15 @@ function gameStart(){
         bltGrpPlayer.addChild(bullet);// グループに追加
     });
     bltGrpPlayer.tl.loop();
+
+    // Test
+    var size = Math.random() * 22 + 10;
+    var x = Math.random() * scene.width;
+    var y = Math.random() * 200;
+    var dX = Math.random() * 80 - 40;
+    var dY = Math.random() * 80 - 40;
+    var enemy = createEnemy(size, size, "orange", x, y, dX, dY, 32)
+    enemyGroup.addChild(enemy);
 
     /*
     // 敵1
