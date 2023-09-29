@@ -54,10 +54,12 @@ function createEnemy(w, h, color, x, y, dX, dY, f){
     enemy.backgroundColor = color;
     enemy.x = x;
     enemy.y = -200;
-    enemy.tl.moveTo(x, y, 16);
-
-    //enemy.tl.moveBy(-dX, -dY, f);
-    //enemy.tl.moveBy(dX, dY, f);
-    //enemy.tl.loop();
+    enemy.tl.moveTo(x, y, 16);// 上から登場!!
+    enemy.tl.then(function(){
+        this.tl.clear();// クリアして...
+        this.tl.moveBy(-dX, -dY, 16);// 左右移動開始
+        this.tl.moveBy(dX, dY, 16);
+        this.tl.loop();
+    });
     return enemy;
 }
