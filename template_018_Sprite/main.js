@@ -6,7 +6,7 @@ const MySprite = enchant.Class.create(enchant.Sprite, {
         enchant.Sprite.call(this, w, h);
         this.backgroundColor = "white";
     },
-    // ランダムで左右か上下か選ぶs
+    // ランダムで左右か上下か選ぶ
     randomMove: function(dX, dY, time){
         const rdm = Math.random();
         if(rdm < 0.4){
