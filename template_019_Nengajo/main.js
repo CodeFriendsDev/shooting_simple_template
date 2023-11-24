@@ -12,32 +12,43 @@ function gameStart(){
     // ここから
     //==========
     
-    scene.backgroundColor = "gray";
+    scene.backgroundColor = "whitesmoke";
 
     // 中心座標
     var cX = scene.width/2;
     var cY = scene.height/2;
     var pX = 50;
+    var color = "firebrick";
 
     // 4つのラベル
-    var lbl1 = createNumber(scene, "2", cX-pX*1.5, cY, 64, "orange");
+    var lbl1 = createLabel(scene, "2", cX-pX*1.7, cY, 64, color);
     scene.addChild(lbl1);
-    var lbl2 = createNumber(scene, "0", cX-pX*0.5, cY, 64, "orange");
+    var lbl2 = createLabel(scene, "0", cX-pX*0.7, cY, 64, color);
     scene.addChild(lbl2);
-    var lbl3 = createNumber(scene, "2", cX+pX*0.5, cY, 64, "orange");
+    var lbl3 = createLabel(scene, "2", cX+pX*0.3, cY, 64, color);
     scene.addChild(lbl3);
-    var lbl4 = createNumber(scene, "4", cX+pX*1.5, cY, 64, "orange");
+    var lbl4 = createLabel(scene, "4", cX+pX*1.3, cY, 64, color);
     scene.addChild(lbl4);
+
+    var msg = createLabel(scene, " HAPPY NEW YEAR!!", cX, cY+80, 16, "black");
+    scene.addChild(msg);
+
+    // スプライト
+    var nasu = new Sprite(32, 32);
+    nasu.backgroundColor = "purple";
+    nasu.x = cX - nasu.width/2;
+    nasu.y = cY - 80;
+    scene.addChild(nasu);
     
     //==========
     // ここまで
     //==========
 };
 
-function createNumber(scene, text, x, y, size, color){
+function createLabel(scene, text, x, y, size, color){
     var lbl = new Label(text);
-    lbl.x = x - lbl._boundWidth;
-    lbl.y = y- lbl._boundHeight;
+    lbl.x = x - lbl._boundWidth / 2;
+    lbl.y = y - lbl._boundHeight / 2;
     lbl.color = color;
     lbl.font = size + "px 'PixelMplus10'";
     return lbl;
