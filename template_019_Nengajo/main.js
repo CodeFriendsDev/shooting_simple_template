@@ -39,6 +39,15 @@ function gameStart(){
     nasu.x = cX - nasu.width/2;
     nasu.y = cY - 80;
     scene.addChild(nasu);
+
+    nasu.tl.rotateBy(360, 64);
+    nasu.tl.then(function(){
+        console.log("end");
+    });
+    nasu.tl.loop();
+
+    // https://easings.net/ (大文字にする事!!)
+    lbl2.tl.moveBy(100, 120, 24, enchant.Easing.EASE_OUT_QUINT);
     
     //==========
     // ここまで
