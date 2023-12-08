@@ -46,8 +46,10 @@ function gameStart(){
     });
     nasu.tl.loop();
 
-    // https://easings.net/ (大文字にする事!!)
-    lbl2.tl.moveBy(100, 120, 24, enchant.Easing.EASE_OUT_QUINT);
+    jumpLabel(lbl1, 50, 8);
+    jumpLabel(lbl2, 60, 8);
+    jumpLabel(lbl3, 70, 8);
+    jumpLabel(lbl4, 80, 8);
     
     //==========
     // ここまで
@@ -61,6 +63,18 @@ function createLabel(scene, text, x, y, size, color){
     lbl.color = color;
     lbl.font = size + "px 'PixelMplus10'";
     return lbl;
+}
+
+function jumpLabel(lbl, height, frame){
+    // https://easings.net/ (大文字にする事!!)
+    // https://atmarkit.itmedia.co.jp/ait/articles/1304/25/news034_3.html
+    lbl.tl.moveBy(0, -height, frame, enchant.Easing.QUAD_EASEOUT);
+    lbl.tl.moveBy(0, height, frame, enchant.Easing.QUAD_EASEIN);
+    lbl.tl.then(function(){
+        console.log("end");
+    });
+    lbl.tl.delay(8);
+    lbl.tl.loop();
 }
 
 function titleStart(){// タイトル画面
